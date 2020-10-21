@@ -26,7 +26,7 @@
           <li><a href="#">Calendario Cholquij</a></li>
           <li><a href="#">Rueda Calendarica</a></li>
           <li><a href="#">Nahuales</a></li>
-          <li><a href="#">Iniciar Sesion</a></li>
+          <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
           <li><a href="#">Registrarse</a></li>
         </ul>
       </nav>
