@@ -29,9 +29,7 @@
         .nav-menu > li > a:before {
         background-color: black;
         }
-
     </style>
-
     <header id="header">
     <div class="container">
       <nav id="nav-menu-container">
@@ -49,17 +47,17 @@
     </div>
     </header>
     <div class="main-container">
-        <form>
+        <form method="POST" action="">
             <div class="form-group">
                 <h1 style="text-align: center;">Iniciar Sesion</h1>
             </div>
             <div class="form-group">
               <label for="InputUser">Usuario</label>
-              <input type="text" class="form-control" id="InputUser" required aria-describedby="emailHelp">
+              <input type="text" name="user" class="form-control" id="InputUser" required aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <label for="InputPass">Contraseña</label>
-              <input type="password" class="form-control" required id="InputPass">
+              <input type="password" name="password" class="form-control" required id="InputPass">
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="checkPass">
