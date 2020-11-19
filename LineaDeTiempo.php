@@ -2,49 +2,152 @@
 session_start();
 
 //$conexion = new mysqli("servidor","usuario","clave","bd")
-$conexion = new mysqli("localhost", "root", "Astrid.19972020", "LineaTiempo");
-$sql = "SELECT * FROM HECHOJISTORICO ";
-$sql .= " ORDER BY añoInicio";
+$conexion = new mysqli("localhost", "administrador", "Admin.123321", "LineaTiempo");
+/*$sql =  "SELECT * FROM (";
+$sql .= "  SELECT MAX(fecha) as fecha, idHechoHistorico as id ";
+$sql .= "  FROM Edicion ";
+$sql .= "  GROUP BY Edicion.idHechoHistorico ";
+$sql .= ") a";
+$sql .= "GROUP BY a.id";
+*/
+$sql = "CALL mostrarHechos";
 $resultado = $conexion->query($sql);
-$cont = 1;
+$numfilas = $resultado->num_rows;
+echo $numfilas;
+$idhecho = -1;
 ?>
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" dir="ltr">
 
 <head>
-    <title>Sitio del Laboratorio de Manejo e Implementación de Archivos</title>
+    <title>Linea de Tiempo</title>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/estiloLineaTiempo.css" rel="stylesheet">
 </head>
-<?php include 'header.php'; ?>
 
 <body>
     <div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
+        <header id="header" style="background-color: #1C1C1C;">
+            <?php include 'BarradeNavegacion.html'; ?>>
+        </header>
+    </div>
+
+    <section>
+        <div class="container" style="padding-top: 120px; height:100px">
+            <div id="myCarousel" class="carousel" data-ride="carousel">
+                <!-- Indicadores -->
+                <ol class="carousel-indicators" style="background-color: black">
+                    <?php for ($i = 0; $i < $numfilas; $i++) {
+                        if ($i == 0) {
+                            echo '<li data-target="#myCarousel" data-slide-to="' . $i . '" class="active"></li>';
+                        } else {
+                            echo '<li data-target="#myCarousel" data-slide-to="' . $i . '"></li>';
+                        }
+                    } ?>
+                </ol>
+
+                <div class="carousel-inner" style="height: 600px; background: url(img/fondo1.png);">
+                    <?php
+                    $num = 0;
+                    foreach ($resultado as $hecho) : ?>
+                        <?php
+                        $sqlCat = "SELECT idHechoHistorico, nombre FROM Categorizar 
+                            inner JOIN Categoria ON Categorizar.idCategoria = Categoria.idCategoria
+                             WHERE Categorizar.idHechoHistorico= " . $hecho['id'];
+                        $cat = $conexion->query($sqlCat);
+                        if ($num == 0) {
+                            echo '<div class="item active" style="height: 600px;">';
+                            $num =  $num + 1;
+                        } else {
+                            $num = $num + 1;
+                            echo '<div class="item " style="height: 600px;">';
+                        }
+
+                        ?>
+                        <div class="carousel-caption" style=" padding-top: 20px;">
+                            <div style="height: 360px;">
+                                <img id="imagen<?php echo $num ?>" src="https://img.vixdata.io/pd/jpg-large/es/sites/default/files/imj/7-misterios-de-la-cultura-maya-que-despertaran-tu-curiosidad.jpg" alt="Paisaje-02" class="imagen">
+                                <div id="desc<?php echo $num ?>" style="display: none;">
+                                    <div class="card" id="transparencia" style=" padding-top: 25%;">
+                                        <div class="card-body" style="padding-left: 5%;padding-right:5%">
+                                            <h5 class="card-title">Descripcion</h5>
+                                            <p class="card-text" style="text-align: justify; "><?php echo $hecho['descripcion'] ?></p>
+                                            <a href="#" class="btn btn-primary">Editar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="transparencia">
+                                <h1 class='titulo' style="margin-bottom: 10px;"> <?php echo $hecho['titulo']; ?></h1>
+                                <h4 class='titulo' style="margin-bottom: 10px;"> Categoria: <?php echo $cat['nombre']; ?> </h4>
+                                <p style="margin-bottom: 10px; margin-bottom: 10px;"> Fecha: <?php echo date("d/m/Y", strtotime($curso['fechaInicio'])) ?></p>
+                                <button class="btn btn-primary owl-slide-animated owl-slide-cta" style="margin-bottom: 20px; ">
+                                    <a class="scrollNavigation" onclick="MostrarDetalles('desc<?php echo $num ?>', 'imagen<?php echo $num ?>');" href="#detalles">Leer Mas</a>
+                                </button>
+                            </div>
+                        </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                </div>
+            <?php endforeach; ?>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+
+            <!-- Controles izquierda-derecha -->
+            <a class="left carousel-control" onclick="ocultarDetalles();" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" style="color: black"></span>
+                <span class="sr-only">Anterior</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+            <a class="right carousel-control" onclick="ocultarDetalles();" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" style="color: black"></span>
+                <span class="sr-only">Siguiente</span>
             </a>
         </div>
-    </div>
+
+        </div>
+    </section>
+
+    <section style="padding-top: 700px;">
+
+        <div class="padre">
+            <div style="color: black;" class="alert alert-primary" role="alert">
+                <div class="card-header">
+                    Falta un hecho importante?
+                </div>
+                <div>
+                    <h5 class="card-title">AGREGA NUEVOS HECHOS HISTORICOS</h5>
+                    <button class="btn btn-primary owl-slide-animated owl-slide-cta" style="margin-bottom: 20px; ">
+                        <a style="color: black; " class="scrollNavigation" href="insertarLineaTiempo.php">AGREGAR</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type=" text/javascript">
+        var id1;
+        var im;
+
+        function MostrarDetalles(id, imag) {
+            var desc = document.getElementById(id);
+            desc.style.display = "block";
+            id1 = id;
+            im = imag;
+            var imagen = document.getElementById(imag);
+            imagen.style.display = "none";
+            return true;
+        }
+
+        function ocultarDetalles() {
+            var desc = document.getElementById(id1);
+            desc.style.display = "none";
+            var imagen = document.getElementById(im);
+            imagen.style.display = "block";
+            return true;
+        }
+    </script>
 </body>
