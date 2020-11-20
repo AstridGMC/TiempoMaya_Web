@@ -29,7 +29,7 @@ jQuery(document).ready(function ($) {
   });
 
   // Mobile Navigation
-  
+
 
   // Smoth scroll on page hash links
   $('a[href*="#"]:not([href="#"])').on('click', function () {
@@ -66,28 +66,27 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  // Porfolio filter
-  $("#portfolio-flters li").click(function () {
-    $("#portfolio-flters li").removeClass('filter-active');
+  // Filtro del portafolio
+  $("#portafolio-flters li").click(function () {
+    $("#portafolio-flters li").removeClass('filter-active');
     $(this).addClass('filter-active');
 
     var selectedFilter = $(this).data("filter");
-    $("#portfolio-wrapper").fadeTo(100, 0);
+    $("#portafolio-wrapper").fadeTo(100, 0);
 
-    $(".portfolio-item").fadeOut().css('transform', 'scale(0)');
+    $(".portafolio-item").fadeOut().css('transform', 'scale(0)');
 
     setTimeout(function () {
       $(selectedFilter).fadeIn(100).css('transform', 'scale(1)');
-      $("#portfolio-wrapper").fadeTo(300, 1);
+      $("#portafolio-wrapper").fadeTo(300, 1);
     }, 300);
   });
 
-  // jQuery counterUp
+  // contar
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
     time: 1000
   });
 
-  // custom code
 
 });

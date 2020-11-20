@@ -30,24 +30,13 @@
         background-color: black;
         }
     </style>
-    <header id="header">
-    <div class="container">
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active">  <a href="#hero" style="color: white;font-size: 23px;"><strong>TIEMPO</strong> MAYA</a></li>
-          <li><a href="#">Linea del Tiempo</a></li>
-          <li><a href="#">Calendario Haab</a></li>
-          <li><a href="#">Calendario Cholquij</a></li>
-          <li><a href="#">Rueda Calendarica</a></li>
-          <li><a href="#">Nahuales</a></li>
-          <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
-          <li><a href="#">Registrarse</a></li>
-        </ul>
-      </nav>
+    <div>
+        <header id="header">
+            <?php include 'BarradeNavegacion.html'; ?>>
+        </header>
     </div>
-    </header>
     <div class="main-container">
-        <form method="POST" action="">
+        <form method="POST" action="./backend/inicioSesion.php">
             <div class="form-group">
                 <h1 style="text-align: center;">Iniciar Sesion</h1>
             </div>
@@ -75,6 +64,5 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="lib/superfish/hoverIntent.js"></script>
   <script src="lib/superfish/superfish.min.js"></script>
-
 </body>
 </html>
