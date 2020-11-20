@@ -32,3 +32,24 @@ hr.hidden {
   height: 0;
   margin: 0;
 }
+
+.imagen{
+  border: 5px solid rgb(0, 0, 0);
+  width:100%; display:block; 
+  height:100%;
+}
+
+.padre {
+  border-top:  5px solid rgb(0, 23, 53);
+  background: rgb(164, 252, 252);
+  height: 150px;
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}
+
+.hijo {
+  width: 50%;
+}
