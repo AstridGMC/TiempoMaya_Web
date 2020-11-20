@@ -1,12 +1,4 @@
-/*
-  Theme Name: Regna
-  Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-  Author: BootstrapMade.com
-  License: https://bootstrapmade.com/license/
-*/
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
+
 body {
   background: #fff;
   color: #666666;
@@ -26,6 +18,8 @@ a:hover, a:active, a:focus {
 p {
   padding: 0;
   margin: 0 0 30px 0;
+  text-align: justify;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -33,21 +27,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
+  color: #2dc997;
 }
 
-/* Prelaoder */
-#preloader {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 999;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  background: #fff url("../img/preloader.svg") no-repeat center center;
-}
 
-/* Back to top button */
 .back-to-top {
   position: fixed;
   display: none;
@@ -87,41 +70,10 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   transition: all 0.5s;
   z-index: 997;
-  
+
 }
 
-#header #logo {
-  float: left;
-}
 
-#header #logo h1 {
-  font-size: 36px;
-  margin: 0;
-  padding: 6px 0;
-  line-height: 1;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-#header #logo h1 a, #header #logo h1 a:hover {
-  color: #fff;
-}
-
-#header #logo img {
-  padding: 0;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  #header #logo h1 {
-    font-size: 26px;
-  }
-  #header #logo img {
-    max-height: 40px;
-  }
-}
 
 #header.header-fixed {
   background: rgba(52, 59, 64, 0.9);
@@ -131,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-#hero {
+#inicio {
   width: 100%;
   height: 100vh;
   background: url(../img/fondo.png) top center;
@@ -140,12 +92,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 1024px) {
-  #hero {
+  #inicio {
     background-attachment: fixed;
   }
 }
 
-#hero:before {
+#inicio:before {
   content: "";
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
@@ -155,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
 }
 
-#hero .hero-container {
+#inicio .inicio-container {
   position: absolute;
   bottom: 0;
   top: 0;
@@ -168,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
 
-#hero h1 {
+#inicio h1 {
   margin: 30px 0 10px 0;
   font-size: 48px;
   font-weight: 700;
@@ -178,27 +130,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-  #hero h1 {
+  #inicio h1 {
     font-size: 28px;
     line-height: 36px;
   }
 }
 
-#hero h2 {
+#inicio h2 {
   color: #eee;
   margin-bottom: 50px;
   font-size: 24px;
 }
 
 @media (max-width: 768px) {
-  #hero h2 {
+  #inicio h2 {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
   }
 }
 
-#hero .btn-get-started {
+#inicio .btn-get-started {
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 500;
@@ -213,7 +165,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-#hero .btn-get-started:hover {
+#inicio .btn-get-started:hover {
   background: #2dc997;
   border: 2px solid #2dc997;
 }
@@ -256,7 +208,7 @@ h1, h2, h3, h4, h5, h6 {
   min-width: 180px;
 }
 
-/* Nav Menu Arrows */
+
 .sf-arrows .sf-with-ul {
   padding-right: 30px;
 }
@@ -274,7 +226,6 @@ h1, h2, h3, h4, h5, h6 {
   content: "\f105";
 }
 
-/* Nav Meu Container */
 #nav-menu-container {
   float: right;
   margin: 0;
@@ -287,7 +238,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Nav Meu Styling */
 .nav-menu a {
   padding: 0 8px 10px 8px;
   text-decoration: none;
@@ -359,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-header .section-title {
   font-size: 32px;
-  color: #111;
+    color: #2dc997;
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;

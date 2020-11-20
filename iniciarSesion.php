@@ -29,37 +29,24 @@
         .nav-menu > li > a:before {
         background-color: black;
         }
-
     </style>
-
-    <header id="header">
-    <div class="container">
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active">  <a href="#hero" style="color: white;font-size: 23px;"><strong>TIEMPO</strong> MAYA</a></li>
-          <li><a href="#">Linea del Tiempo</a></li>
-          <li><a href="#">Calendario Haab</a></li>
-          <li><a href="#">Calendario Cholquij</a></li>
-          <li><a href="#">Rueda Calendarica</a></li>
-          <li><a href="#">Nahuales</a></li>
-          <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
-          <li><a href="#">Registrarse</a></li>
-        </ul>
-      </nav>
+    <div>
+        <header id="header">
+            <?php include 'BarradeNavegacion.html'; ?>>
+        </header>
     </div>
-    </header>
     <div class="main-container">
-        <form>
+        <form method="POST" action="./backend/inicioSesion.php">
             <div class="form-group">
                 <h1 style="text-align: center;">Iniciar Sesion</h1>
             </div>
             <div class="form-group">
               <label for="InputUser">Usuario</label>
-              <input type="text" class="form-control" id="InputUser" required aria-describedby="emailHelp">
+              <input type="text" name="user" class="form-control" id="InputUser" required aria-describedby="emailHelp">
             </div>
             <div class="form-group">
               <label for="InputPass">Contraseña</label>
-              <input type="password" class="form-control" required id="InputPass">
+              <input type="password" name="password" class="form-control" required id="InputPass">
             </div>
             <div class="form-group form-check">
               <input type="checkbox" class="form-check-input" id="checkPass">
@@ -77,6 +64,5 @@
   <script src="lib/counterup/counterup.min.js"></script>
   <script src="lib/superfish/hoverIntent.js"></script>
   <script src="lib/superfish/superfish.min.js"></script>
-
 </body>
 </html>

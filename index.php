@@ -17,20 +17,7 @@
 
 
   <header id="header">
-    <div class="container">
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active">  <a href="#hero" style="color: white;font-size: 23px;"><strong>TIEMPO</strong> MAYA</a></li>
-          <li><a href="#">Linea del Tiempo</a></li>
-          <li><a href="#">Calendario Haab</a></li>
-          <li><a href="#">Calendario Cholquij</a></li>
-          <li><a href="#">Rueda Calendarica</a></li>
-          <li><a href="#">Nahuales</a></li>
-          <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
-          <li><a href="#">Registrarse</a></li>
-        </ul>
-      </nav>
-    </div>
+  <?php include "BarradeNavegacion.html" ?>
   </header>
 
 
